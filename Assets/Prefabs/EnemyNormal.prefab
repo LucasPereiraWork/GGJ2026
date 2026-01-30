@@ -281,6 +281,62 @@ PrefabInstance:
       propertyPath: detectorTag
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6281684507075980967}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6281684507075980967}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NotInRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChaserEnemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChaserEnemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5821867205419274671, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -370,7 +426,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 10
 --- !u!114 &2913614938469655989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
@@ -492,7 +548,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 3
 --- !u!4 &8099477321033778305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5821867205419274671, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
@@ -513,6 +569,34 @@ PrefabInstance:
     - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
       propertyPath: detectorTag
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6281684507075980967}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChaserEnemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnStay.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5821867205419274671, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,7 +698,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!4 &8998367199888746238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5821867205419274671, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}

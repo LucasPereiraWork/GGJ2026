@@ -79,6 +79,11 @@ public class ChaserEnemy : MonoBehaviour
         ChangeState(EnemyStates.IDLE);
     }
 
+    public void InRange()
+    {
+
+    }
+
     private void FixedUpdate()
     {
         if (isDefeated) return;
