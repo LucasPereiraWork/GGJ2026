@@ -1,0 +1,20 @@
+using UnityEngine;
+
+public class ChaserEnemyChasing : EnemyBase
+{
+    public override void BeginState(ChaserEnemy enemy)
+    {
+        base.BeginState(enemy);
+        chaserEnemy.Move();
+    }
+
+    public override void UpdateState()
+    {
+        chaserEnemy.Rb.linearVelocity = new Vector2(chaserEnemy.Dir.normalized.x * chaserEnemy.Speed, chaserEnemy.Dir.normalized.y * chaserEnemy.Speed);
+    }
+
+    public override void ExitState()
+    {
+        chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.CHASING);
+    }
+}
