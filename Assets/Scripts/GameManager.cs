@@ -2,11 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Events")]
-    [SerializeField] private UnityEvent on_coins;
+    [SerializeField] private UnityEvent onCoins;
+    [SerializeField] private UnityEvent onLevelReset;
 
     [Header("GameObjects")]
 
@@ -67,5 +69,9 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.Instance.PlayMusic(1);
         }
+    }
+
+    public void LevelReset()
+    {
     }
 }
