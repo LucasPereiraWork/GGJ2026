@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     private int _currentLevel;
 
     private GameObject _currentSpawnPoint;
+    private GameObject interactable;
+
 
     public static GameManager Instance { get; private set; }
     public bool IsPaused { get; private set; } = false;
@@ -63,15 +65,20 @@ public class GameManager : MonoBehaviour
         }
         if (_currentLevel == 0)
         {
-            AudioManager.Instance.PlayMusic(0);
+            //AudioManager.Instance.PlayMusic(0);
         }
         else
         {
-            AudioManager.Instance.PlayMusic(1);
+            //AudioManager.Instance.PlayMusic(1);
         }
     }
 
     public void LevelReset()
     {
+    }
+
+    public void RegisterInteractable(GameObject envInteractable)
+    {
+        interactable = envInteractable;
     }
 }
