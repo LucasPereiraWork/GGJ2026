@@ -33,7 +33,17 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        esc = InputSystem.actions.FindAction("Esc");
         ShowPanelEnum(menusState.MAINMENU);
+
+    }
+
+    private void Update()
+    {
+        if (esc.WasPressedThisFrame() && _menusBaseState != null)
+        {
+            _menusBaseState.ExitState();
+        }
     }
 
     public enum menusState
