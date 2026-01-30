@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
+        ShowPanelEnum(menusState.MAINMENU);
     }
 
     public enum menusState
