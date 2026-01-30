@@ -1,18 +1,21 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
 
-    [SerializeField] private List<GameObject> _menusList = new();
+    [SerializeField] private List<GameObject> _panelsList = new();
 
-    private Dictionary<string, GameObject> _menusDictionary = new();
+    private MenusBaseState _menusBaseState = null;
+    InputAction esc;
 
 
     private GameObject _currentMenu;
-    public GameObject CurrentMenu => _currentMenu;
+    private GameObject _previousMenu;
 
 
 
@@ -27,15 +30,6 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        PrepDictionaries();
-    }
-
-    private void PrepDictionaries()
-    {
-        foreach (var menu in _menusList)
-        {
-            _menusDictionary.Add(menu.gameObject.name, menu);
-        }
     }
 
     private void Start()
@@ -43,18 +37,78 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ShowPanel(string name)
+    public enum menusState
     {
-        _currentMenu.SetActive(false);
-        if (_menusDictionary.TryGetValue(name, out var menu))
+        MAINMENU,
+        PAUSEMENU,
+        HUD,
+        OPTIONSPAUSE,
+        OPTIONSMAINMENU,
+        SKILLES,
+        AREYOUSUREPAUSE,
+        AREYOUSUREEXIT,
+        CREDITSMENU,
+        FADEMENU,
+        INPUTMENU,
+        MAPMENU,
+        LEVELTMENU,
+        NONE
+    }
+
+    private menusState menuState;
+    public GameObject CurrentMenu { get => _currentMenu; set => _currentMenu = value; }
+    public GameObject PreviousMenu { get => _previousMenu; set => _previousMenu = value; }
+    public menusState MenuState => menuState;
+    public List<GameObject> PanelsList => _panelsList;
+
+    public void ShowPanelString(string name)
+    {
+        ShowPanelEnum(Enum.Parse<menusState>(name));
+    }
+
+    public void ShowPanelEnum(menusState menusState)
+    {
+        _menusBaseState = null;
+        switch (menusState)
         {
-            _currentMenu = menu;
-            if (_currentMenu) _currentMenu.SetActive(true);
+            case menusState.NONE:
+                _menusBaseState = new MenuNone();
+                break;
+            case menusState.MAINMENU:
+                _menusBaseState = new MainMenu();
+                break;
+            case menusState.PAUSEMENU:
+                _menusBaseState = new PauseMenu();
+                break;
+            case menusState.HUD:
+                _menusBaseState = new MainLevel();
+                break;
+            case menusState.OPTIONSPAUSE:
+                _menusBaseState = new Options();
+                break;
+            case menusState.OPTIONSMAINMENU:
+                _menusBaseState = new OptionsMainMenu();
+                break;
+            case menusState.AREYOUSUREPAUSE:
+                _menusBaseState = new AreYouSurePause();
+                break;
+            case menusState.AREYOUSUREEXIT:
+                _menusBaseState = new AreYouSureExit();
+                break;
+            case menusState.CREDITSMENU:
+                _menusBaseState = new CreditsMenu();
+                break;
+            default:
+                Debug.LogError("No menu by that ID");
+                break;
         }
+        menuState = menusState;
+        _menusBaseState.BeginState(this);
     }
 
     public void UpdateState()
     {
+        _menusBaseState.UpdateState();
     }
 
     public void QuitGame()
