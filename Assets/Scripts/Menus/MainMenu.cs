@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuNone : MenusBaseState
+public class MainMenu : MenusBaseState
 {
     public override void BeginState(UIManager uiManager)
     {
@@ -15,5 +15,6 @@ public class MenuNone : MenusBaseState
     public override void ExitState()
     {
         base.ExitState();
+        uiManager.ShowPanelEnum(UIManager.menusState.AREYOUSUREEXIT);
     }
 }

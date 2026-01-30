@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -44,14 +43,9 @@ public class UIManager : MonoBehaviour
         HUD,
         OPTIONSPAUSE,
         OPTIONSMAINMENU,
-        SKILLES,
         AREYOUSUREPAUSE,
         AREYOUSUREEXIT,
         CREDITSMENU,
-        FADEMENU,
-        INPUTMENU,
-        MAPMENU,
-        LEVELTMENU,
         NONE
     }
 
@@ -81,10 +75,10 @@ public class UIManager : MonoBehaviour
                 _menusBaseState = new PauseMenu();
                 break;
             case menusState.HUD:
-                _menusBaseState = new MainLevel();
+                _menusBaseState = new Hud();
                 break;
             case menusState.OPTIONSPAUSE:
-                _menusBaseState = new Options();
+                _menusBaseState = new OptionsPauseMenu();
                 break;
             case menusState.OPTIONSMAINMENU:
                 _menusBaseState = new OptionsMainMenu();
@@ -96,7 +90,7 @@ public class UIManager : MonoBehaviour
                 _menusBaseState = new AreYouSureExit();
                 break;
             case menusState.CREDITSMENU:
-                _menusBaseState = new CreditsMenu();
+                _menusBaseState = new MenuCredits();
                 break;
             default:
                 Debug.LogError("No menu by that ID");
