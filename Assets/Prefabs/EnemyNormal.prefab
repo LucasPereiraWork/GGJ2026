@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4141631515467276948}
-  m_Father: {fileID: 2267680419064989951}
+  m_Father: {fileID: 1925241948824483987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -223,7 +223,6 @@ Transform:
   m_Children:
   - {fileID: 1925241948824483987}
   - {fileID: 6238393092964062925}
-  - {fileID: 6621255097616875784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3010489026609174975
@@ -555,6 +554,7 @@ Transform:
   m_Children:
   - {fileID: 8998367199888746238}
   - {fileID: 8099477321033778305}
+  - {fileID: 6621255097616875784}
   m_Father: {fileID: 2267680419064989951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6281684507075980967
@@ -603,7 +603,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &7283495578839515741
 SpriteRenderer:
   serializedVersion: 2
