@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChaserEnemy
   rb: {fileID: 5208896535980498222}
   detector: {fileID: 1719284818447049413}
+  playerDetector: {fileID: 1971345810665373882}
   spriteRenderer: {fileID: 7283495578839515741}
   animatorChaser: {fileID: 3599365596454243628}
   basePos: {fileID: 3324125627274540097}
@@ -357,6 +358,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3236187940914377445}
   m_SourcePrefab: {fileID: 100100000, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+--- !u!114 &1971345810665373882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+  m_PrefabInstance: {fileID: 2354382965939508526}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438688817466420836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c65763fc93a004dbbe283d0544068d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Detector
 --- !u!1 &4438688817466420836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2104607243014749002, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}

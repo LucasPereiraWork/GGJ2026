@@ -5,6 +5,7 @@ public class ChaserEnemy : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Detector detector;
+    [SerializeField] private Detector playerDetector;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animatorChaser;
     [SerializeField] private GameObject basePos;
@@ -72,7 +73,7 @@ public class ChaserEnemy : MonoBehaviour
     public void DetectedPlayer()
     {
         _isDetectedPlayer = true;
-        _player = detector.Collider.gameObject;
+        _player = playerDetector.Collider.gameObject;
         chasingEnemyBaseState.ExitState();
     }
 
