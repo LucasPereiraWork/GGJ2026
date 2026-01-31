@@ -15,6 +15,6 @@ public class ChaserEnemyChasing : EnemyBase
 
     public override void ExitState()
     {
-        chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.CHASING);
+        if (!chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.IDLE);
     }
 }

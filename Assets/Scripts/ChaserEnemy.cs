@@ -5,9 +5,9 @@ public class ChaserEnemy : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Detector detector;
-    [SerializeField] private Detector rangeDetector;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animatorChaser;
+    [SerializeField] private GameObject basePos;
 
     [SerializeField] private float speed;
 
@@ -16,6 +16,8 @@ public class ChaserEnemy : MonoBehaviour
 
     private bool _isDetectedPlayer = false;
     private GameObject _player = null;
+
+    private bool _isKnockback = false;
 
     private EnemyBase chasingEnemyBaseState;
     private EnemyStates enemyState = EnemyStates.IDLE;
@@ -26,12 +28,14 @@ public class ChaserEnemy : MonoBehaviour
     public float Speed => speed;
     public Rigidbody2D Rb => rb;
     public bool IsDetectedPlayer => _isDetectedPlayer;
+    public bool IsKnockback => _isKnockback;
 
     public enum EnemyStates
     {
         IDLE,
         CHASING,
         KNOCKBACK,
+        RETURN,
         INVISIBLE
     }
 
@@ -54,6 +58,9 @@ public class ChaserEnemy : MonoBehaviour
             case EnemyStates.KNOCKBACK:
                 chasingEnemyBaseState = new ChaserEnemyKnockback();
                 break;
+            case EnemyStates.RETURN:
+                chasingEnemyBaseState = new ChaserEnemyReturn();
+                break;
             default:
                 break;
         }
@@ -64,24 +71,21 @@ public class ChaserEnemy : MonoBehaviour
     public void DetectedPlayer()
     {
         _isDetectedPlayer = true;
+        _player = detector.Collider.gameObject;
         chasingEnemyBaseState.ExitState();
     }
 
     public void NotDetectedPlayer()
     {
         _isDetectedPlayer = false;
+        _player = null;
         chasingEnemyBaseState.ExitState();
     }
 
-    public void NotInRange()
+    public void KnockBack()
     {
-        if (rangeDetector.Collider.gameObject != null && rangeDetector.Collider.gameObject != gameObject) return;
-        ChangeState(EnemyStates.IDLE);
-    }
-
-    public void InRange()
-    {
-
+        _isKnockback = true;
+        ChangeState(EnemyStates.KNOCKBACK);
     }
 
     private void FixedUpdate()

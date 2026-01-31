@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChaserEnemyIdle : EnemyBase
+public class ChaserEnemyReturn : EnemyBase
 {
     public override void BeginState(ChaserEnemy enemy)
     {
@@ -10,13 +10,12 @@ public class ChaserEnemyIdle : EnemyBase
 
     public override void UpdateState()
     {
-        chaserEnemy.Rb.linearVelocity = Vector2.zero;
+        chaserEnemy.Rb.linearVelocity = new Vector2(chaserEnemy.Dir.normalized.x * chaserEnemy.Speed, chaserEnemy.Dir.normalized.y * chaserEnemy.Speed);
     }
 
     public override void ExitState()
     {
+        if (!chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.IDLE);
         if (chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.CHASING);
-        if (!chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.RETURN);
     }
-
 }
