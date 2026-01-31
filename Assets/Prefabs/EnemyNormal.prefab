@@ -576,7 +576,7 @@ MonoBehaviour:
   animatorChaser: {fileID: 3599365596454243628}
   basePos: {fileID: 3324125627274540097}
   speed: 1
-  damage: 0
+  damage: 3
 --- !u!50 &5208896535980498222
 Rigidbody2D:
   serializedVersion: 5
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   rb: {fileID: 5208896535980498222}
-  maxHealth: 100
+  maxHealth: 3
   minHealth: 0
   healthBarr: {fileID: 7955350239495021944}
   onDefeat:

@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         if (_isDefeated) return;
         currentHealth = CurrentHealth - delta;
         currentHealth = Mathf.Clamp(CurrentHealth, minHealth, MaxHealth);
-        healthBarr.value = currentHealth;
+        healthBarr.value = currentHealth / maxHealth;
         if (CurrentHealth <= minHealth)
         {
             Death();
