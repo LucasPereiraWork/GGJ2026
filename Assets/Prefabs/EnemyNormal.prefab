@@ -280,6 +280,34 @@ PrefabInstance:
       propertyPath: detectorTag
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6281684507075980967}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DetectedPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChaserEnemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321153559805826452, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
+      propertyPath: OnEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5821867205419274671, guid: 4df2ea2cb359c0c46936710a7b5c023a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
