@@ -11,6 +11,7 @@ public class ChaserEnemy : MonoBehaviour
     [SerializeField] private GameObject basePos;
 
     [SerializeField] private float speed;
+    [SerializeField] private int damage;
 
     private bool isDefeated;
     private Vector2 _dir;
