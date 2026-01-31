@@ -1,16 +1,24 @@
 using UnityEngine;
 
-public class InteractablePurification : MonoBehaviour
+public class InteractablePurification : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField] private GameObject door;
+
+
+    public void DeregisterInteractable()
     {
-        
+        GameManager.Instance.RegisterInteractable(null);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        //see if player has mask
+        door.SetActive(false);
+    }
+
+    public void RegisterInteractable()
+    {
+        GameManager.Instance.RegisterInteractable(gameObject);
     }
 }
