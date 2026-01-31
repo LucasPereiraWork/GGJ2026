@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Room : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Room : MonoBehaviour
     [SerializeField] private List<GameObject> enemies = new();
     [SerializeField] private GameObject mask;
     [SerializeField] private bool hasActivated = false;
+    [SerializeField] private UnityEvent _onHasActivated;
 
     private int enemyNum = 0;
 
@@ -38,6 +40,7 @@ public class Room : MonoBehaviour
     {
         if (hasActivated) return;
         hasActivated = true;
+        _onHasActivated.Invoke();
         foreach (GameObject go in doors)
         {
             go.SetActive(true);
