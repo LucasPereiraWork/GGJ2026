@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public int CurrentLevel => _currentLevel;
     public GameObject CurrentSpawnPoint { get => _currentSpawnPoint; set => _currentSpawnPoint = value; }
+    public GameObject Interactable => interactable;
 
 
     private void Awake()
