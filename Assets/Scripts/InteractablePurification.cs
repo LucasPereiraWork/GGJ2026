@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class InteractablePurification : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] private GameObject door;
     [SerializeField] private UnityEvent _onInteract;
 
 
@@ -17,7 +16,6 @@ public class InteractablePurification : MonoBehaviour, IInteractable
     {
         //see if player has mask
         _onInteract.Invoke();
-        door.SetActive(false);
     }
 
     public void RegisterInteractable()
