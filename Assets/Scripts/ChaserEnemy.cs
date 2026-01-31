@@ -5,11 +5,13 @@ public class ChaserEnemy : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Detector detector;
-    [SerializeField] private Detector rangeDetector;
+    [SerializeField] private Detector playerDetector;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animatorChaser;
+    [SerializeField] private GameObject basePos;
 
     [SerializeField] private float speed;
+    [SerializeField] private int damage;
 
     private bool isDefeated;
     private Vector2 _dir;
@@ -17,21 +19,27 @@ public class ChaserEnemy : MonoBehaviour
     private bool _isDetectedPlayer = false;
     private GameObject _player = null;
 
+    private bool _isKnockback = false;
+
     private EnemyBase chasingEnemyBaseState;
     private EnemyStates enemyState = EnemyStates.IDLE;
     private Coroutine _timerCoroutine;
 
-    public Vector2 Dir => _dir;
+    public Vector2 Dir { get => _dir; set => _dir = value; }
     public bool IsDefeated => isDefeated;
     public float Speed => speed;
     public Rigidbody2D Rb => rb;
     public bool IsDetectedPlayer => _isDetectedPlayer;
+    public bool IsKnockback => _isKnockback;
+    public GameObject Player => _player;
+    public GameObject BasePos => basePos;
 
     public enum EnemyStates
     {
         IDLE,
         CHASING,
         KNOCKBACK,
+        RETURN,
         INVISIBLE
     }
 
@@ -54,6 +62,9 @@ public class ChaserEnemy : MonoBehaviour
             case EnemyStates.KNOCKBACK:
                 chasingEnemyBaseState = new ChaserEnemyKnockback();
                 break;
+            case EnemyStates.RETURN:
+                chasingEnemyBaseState = new ChaserEnemyReturn();
+                break;
             default:
                 break;
         }
@@ -64,24 +75,21 @@ public class ChaserEnemy : MonoBehaviour
     public void DetectedPlayer()
     {
         _isDetectedPlayer = true;
+        _player = playerDetector.Collider.gameObject;
         chasingEnemyBaseState.ExitState();
     }
 
     public void NotDetectedPlayer()
     {
         _isDetectedPlayer = false;
+        _player = null;
         chasingEnemyBaseState.ExitState();
     }
 
-    public void NotInRange()
+    public void KnockBack()
     {
-        if (rangeDetector.Collider.gameObject != null && rangeDetector.Collider.gameObject != gameObject) return;
-        ChangeState(EnemyStates.IDLE);
-    }
-
-    public void InRange()
-    {
-
+        _isKnockback = true;
+        ChangeState(EnemyStates.KNOCKBACK);
     }
 
     private void FixedUpdate()
@@ -113,12 +121,6 @@ public class ChaserEnemy : MonoBehaviour
         //}
     }
 
-    public void Move()
-    {
-        if (enemyState != EnemyStates.IDLE) return;
-        //_dir = _dir.normalized;
-    }
-
     private IEnumerator IdleTime(float time)
     {
         yield return new WaitForSeconds(time);
@@ -140,5 +142,10 @@ public class ChaserEnemy : MonoBehaviour
             StopCoroutine(_timerCoroutine);
             _timerCoroutine = null;
         }
+    }
+
+    public void ReturnToBasePos()
+    {
+        ChangeState(EnemyStates.RETURN);
     }
 }

@@ -5,7 +5,6 @@ public class ChaserEnemyIdle : EnemyBase
     public override void BeginState(ChaserEnemy enemy)
     {
         base.BeginState(enemy);
-        chaserEnemy.Move();
     }
 
     public override void UpdateState()
@@ -15,7 +14,8 @@ public class ChaserEnemyIdle : EnemyBase
 
     public override void ExitState()
     {
-        chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.CHASING);
+        if (chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.CHASING);
+        if (!chaserEnemy.IsDetectedPlayer) chaserEnemy.ChangeState(ChaserEnemy.EnemyStates.RETURN);
     }
 
 }

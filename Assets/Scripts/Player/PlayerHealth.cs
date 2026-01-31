@@ -19,7 +19,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damageAmount;
         OnPlayerTakeDemage?.Invoke(currentHealth);
         if(currentHealth <= 0) {
-            Destroy(gameObject);
+            gameObject.transform.position = GameManager.Instance.CurrentSpawnPoint.transform.position;
+            currentHealth = maxHealth;
+            //Destroy(gameObject);
         }
 
     }

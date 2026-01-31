@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public class PlayerControls : MonoBehaviour
@@ -17,11 +18,16 @@ public class PlayerControls : MonoBehaviour
     Animator anim;
     private bool facingDown = true;
 
+
+
+    InputAction _interact;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        
+        _interact = InputSystem.actions.FindAction("Interact");
     }
 
     // Update is called once per frame
@@ -48,7 +54,12 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             player_combat.Attack();
         }
+        if (_interact.WasPressedThisFrame())
+        {
+            Interact();
+        }
         Animate();
+
     }
     private void FixedUpdate()
     {
@@ -73,5 +84,12 @@ public class PlayerControls : MonoBehaviour
         anim.SetFloat("MoveMagnitude", input.magnitude);
         anim.SetFloat("LastMoveX", lastMoveDirection.x);
         anim.SetFloat("LastMoveY", lastMoveDirection.y);
+    }
+
+    private void Interact()
+    {
+        if (!GameManager.Instance.Interactable) return;
+        if (!GameManager.Instance.Interactable.TryGetComponent(out IInteractable interactable)) return;
+        interactable.Interact();
     }
 }
