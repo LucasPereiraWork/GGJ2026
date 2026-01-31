@@ -1,16 +1,28 @@
 using UnityEngine;
 
-public class InteractableRock : MonoBehaviour
+public class InteractableRock : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Detector detector;
+    private GameObject _player;
+
+    public void DeregisterInteractable()
     {
-        
+        GameManager.Instance.RegisterInteractable(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        _player = detector.Collider.gameObject;
+        gameObject.transform.parent = _player.transform;
+    }
+
+    public void DeInteract()
+    {
+        gameObject.transform.parent = null;
+    }
+
+    public void RegisterInteractable()
+    {
+        GameManager.Instance.RegisterInteractable(null);
     }
 }
