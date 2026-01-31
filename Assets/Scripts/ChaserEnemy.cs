@@ -120,7 +120,7 @@ public class ChaserEnemy : MonoBehaviour
     public void Move()
     {
         if (enemyState != EnemyStates.IDLE) return;
-        //_dir = _dir.normalized;
+        _dir = (gameObject.transform.position - _player.transform.position).normalized;
     }
 
     private IEnumerator IdleTime(float time)
