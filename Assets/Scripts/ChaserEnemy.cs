@@ -31,6 +31,7 @@ public class ChaserEnemy : MonoBehaviour
     public bool IsDetectedPlayer => _isDetectedPlayer;
     public bool IsKnockback => _isKnockback;
     public GameObject Player => _player;
+    public GameObject BasePos => basePos;
 
     public enum EnemyStates
     {
@@ -140,5 +141,10 @@ public class ChaserEnemy : MonoBehaviour
             StopCoroutine(_timerCoroutine);
             _timerCoroutine = null;
         }
+    }
+
+    public void ReturnToBasePos()
+    {
+        ChangeState(EnemyStates.RETURN);
     }
 }
