@@ -9,6 +9,7 @@ public class ChaserEnemyChasing : EnemyBase
 
     public override void UpdateState()
     {
+        chaserEnemy.Dir = (chaserEnemy.Player.transform.position - chaserEnemy.transform.position).normalized;
         chaserEnemy.Rb.linearVelocity = new Vector2(chaserEnemy.Dir.normalized.x * chaserEnemy.Speed, chaserEnemy.Dir.normalized.y * chaserEnemy.Speed);
     }
 
