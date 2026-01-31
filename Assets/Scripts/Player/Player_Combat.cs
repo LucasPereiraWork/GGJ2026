@@ -5,6 +5,8 @@
         //public Animator anim;
         public float cooldown = 0.5f;
         public float timer;
+        [SerializeField] private int currentDamage = 1;
+        [SerializeField] private float force = 10.0f;
 
         [SerializeField] private Transform attackPoint;
         [SerializeField] private float attackRange = 0.5f;
@@ -39,12 +41,17 @@
                 if (col.CompareTag("Enemy"))
                 {
                     
-                    Enemy enemyScript = col.GetComponent<Enemy>();
+                    EnemyHealth enemyScript = col.GetComponent<EnemyHealth>();
                     if (enemyScript != null)
                     {
-                        enemyScript.GotHit();
+                        enemyScript.TakeDamage(gameObject, true, currentDamage, force, Vector2.zero);
                     }
                 }
             }
         }
+
+        public void UpdateDamage()
+    {
+        currentDamage = currentDamage * 2;
+    }
     }

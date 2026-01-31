@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -9,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 100;
     [SerializeField] private float minHealth = 0;
     [SerializeField] private Slider healthBarr;
+    [SerializeField] private SpriteRenderer sr;
+
+    private Color originalColor;
 
     private float currentHealth;
     private bool _isDefeated = false;
@@ -23,6 +27,11 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = MaxHealth;
+    }
+
+    private void Start()
+    {
+        originalColor = (sr != null) ? sr.color : Color.white;
     }
 
     private void CalculateHealth(float delta)
@@ -45,6 +54,9 @@ public class EnemyHealth : MonoBehaviour
     {
         if (damageDealer == null || _isDefeated) return;
         CalculateHealth(damage);
+        StopAllCoroutines();
+        StartCoroutine(FlashColor());
+        Debug.Log("O Dummy detectou o golpe!");
     }
 
     public virtual void TakeDamage(GameObject damageDealer, bool isDamage, float damage, float force, Vector2 dir)
@@ -57,6 +69,22 @@ public class EnemyHealth : MonoBehaviour
     {
         _isDefeated = true;
         onDefeat.Invoke();
+    }
+
+    public void GotHit()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlashColor());
+        Debug.Log("O Dummy detectou o golpe!");
+    }
+
+    private IEnumerator FlashColor()
+    {
+        if (sr == null) yield break;
+
+        sr.color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+        sr.color = originalColor;
     }
 
 
