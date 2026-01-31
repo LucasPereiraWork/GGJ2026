@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 479157392164402532, guid: 105fc638d104cee4bb18a726a563d45b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479157392164402532, guid: 105fc638d104cee4bb18a726a563d45b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525627789365666339, guid: 105fc638d104cee4bb18a726a563d45b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1663287714672967296, guid: 105fc638d104cee4bb18a726a563d45b, type: 3}
       propertyPath: m_Name
       value: EnemyNormal
