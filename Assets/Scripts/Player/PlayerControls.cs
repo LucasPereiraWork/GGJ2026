@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashTime = 0.2f;
     private bool isDashing;
+    public Player_Combat player_combat;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,6 +32,9 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(ExecuteDash());
+        }
+        if (Input.GetMouseButtonDown(0)){
+            player_combat.Attack();
         }
     }
     private void FixedUpdate()
