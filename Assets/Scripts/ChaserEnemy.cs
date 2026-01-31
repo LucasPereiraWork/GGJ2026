@@ -23,12 +23,13 @@ public class ChaserEnemy : MonoBehaviour
     private EnemyStates enemyState = EnemyStates.IDLE;
     private Coroutine _timerCoroutine;
 
-    public Vector2 Dir => _dir;
+    public Vector2 Dir { get => _dir; set => _dir = value; }
     public bool IsDefeated => isDefeated;
     public float Speed => speed;
     public Rigidbody2D Rb => rb;
     public bool IsDetectedPlayer => _isDetectedPlayer;
     public bool IsKnockback => _isKnockback;
+    public GameObject Player => _player;
 
     public enum EnemyStates
     {
@@ -115,12 +116,6 @@ public class ChaserEnemy : MonoBehaviour
         //{
             //healthPlayer.TakeDamage(gameObject, true, chasingEnemySata.Damage, chasingEnemySata.KnockBack);
         //}
-    }
-
-    public void Move()
-    {
-        if (enemyState != EnemyStates.IDLE) return;
-        _dir = (gameObject.transform.position - _player.transform.position).normalized;
     }
 
     private IEnumerator IdleTime(float time)

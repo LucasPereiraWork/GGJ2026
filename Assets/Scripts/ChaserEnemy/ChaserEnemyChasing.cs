@@ -5,7 +5,6 @@ public class ChaserEnemyChasing : EnemyBase
     public override void BeginState(ChaserEnemy enemy)
     {
         base.BeginState(enemy);
-        chaserEnemy.Move();
     }
 
     public override void UpdateState()

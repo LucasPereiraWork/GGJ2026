@@ -1,15 +1,16 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ChaserEnemyReturn : EnemyBase
 {
     public override void BeginState(ChaserEnemy enemy)
     {
         base.BeginState(enemy);
-        chaserEnemy.Move();
     }
 
     public override void UpdateState()
     {
+        chaserEnemy.Dir = (chaserEnemy.transform.position - chaserEnemy.Player.transform.position).normalized;
         chaserEnemy.Rb.linearVelocity = new Vector2(chaserEnemy.Dir.normalized.x * chaserEnemy.Speed, chaserEnemy.Dir.normalized.y * chaserEnemy.Speed);
     }
 
